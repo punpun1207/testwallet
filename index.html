@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a7c66" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e161c" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Sổ chi tiêu</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <div class="nav">
+      <button id="prev" type="button" aria-label="Tháng trước">‹</button>
+      <h1 id="month"></h1>
+      <button id="next" type="button" aria-label="Tháng sau">›</button>
+    </div>
+
+    <div class="total" id="total">0 đ</div>
+    <p class="sub" id="sub"></p>
+
+    <div class="bar" role="progressbar" aria-label="Đã chi so với ngân sách" aria-valuemin="0" aria-valuemax="100" id="pb">
+      <i id="fill" style="width:0"></i>
+    </div>
+
+    <div class="budget">
+      <label for="budget">Ngân sách</label>
+      <input id="budget" type="text" inputmode="numeric" placeholder="vd: 2tr hoặc 2000k">
+    </div>
+
+    <div class="stats">
+      <div class="in"><small>Nhận vào</small><b id="sIn">0 đ</b></div>
+      <div><small>Chi tiêu</small><b id="sChi">0 đ</b></div>
+      <div><small>Chuyển đi</small><b id="sChuyen">0 đ</b></div>
+    </div>
+
+    <section>
+      <h2>Thêm giao dịch</h2>
+      <div class="panel">
+        <div class="tabs" id="tabs"></div>
+        <div class="row">
+          <input id="amt" type="text" inputmode="numeric" placeholder="Số tiền (vd: 35k, 1tr2)" aria-label="Số tiền" autocomplete="off">
+        </div>
+        <div class="chips" id="amts"></div>
+        <div class="chips" id="cats"></div>
+        <div id="whoBox">
+          <div class="row">
+            <input id="who" type="text" aria-label="Người liên quan" maxlength="30" autocomplete="off">
+          </div>
+          <div class="chips" id="whos"></div>
+        </div>
+        <div class="row">
+          <input id="note" type="text" placeholder="Ghi chú: chọn gợi ý hoặc tự gõ" aria-label="Ghi chú" maxlength="60" autocomplete="off">
+        </div>
+        <div class="chips" id="sugs"></div>
+        <div class="row">
+          <input id="date" type="date" aria-label="Ngày">
+        </div>
+        <button class="add" id="add" type="button">Thêm giao dịch</button>
+        <p class="msg" id="msg" role="status"></p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Chi tiêu theo nhóm</h2>
+      <div id="catSum"></div>
+    </section>
+
+    <section>
+      <h2>Giao dịch</h2>
+      <div class="chips" id="flt"></div>
+      <div id="list"></div>
+    </section>
+
+    <details>
+      <summary>Sao lưu và khôi phục</summary>
+      <p class="sub bk-desc">Dữ liệu lưu ngay trên máy này. Sao chép đoạn mã dưới đây cất đi, khi cần dán lại và bấm Khôi phục.</p>
+      <textarea id="bk" aria-label="Dữ liệu sao lưu" spellcheck="false"></textarea>
+      <div class="bk-actions">
+        <button class="mini" id="bkShow" type="button">Hiện dữ liệu</button>
+        <button class="mini" id="bkLoad" type="button">Khôi phục</button>
+      </div>
+      <p class="msg" id="bkMsg" role="status"></p>
+    </details>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
